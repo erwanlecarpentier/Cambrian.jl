@@ -74,3 +74,16 @@ function evaluate_behavior!(e::BCEEvo)
         e.population[i].behavior[:] = e.behavior(e.population[i])[:]
     end
 end
+
+function explore!(e::BCEEvo)
+    evaluate_behavior!(e)
+    e.cluster_representatives = e.cluster(e)
+    while length(e.cluster_representatives) < e.cfg.n_emitters
+        B = reduce(hcat, [e.population[i].behavior for i in eachindex(e.population)])
+        most_novel_index = argmax(mean(pairwise(Euclidean(), B, dims=2), dims=1))[2]
+        for i in 1:e.cfg.lambda_explore
+            push!(e.population, mutate(e.population[most_novel_index]))
+        end
+        e.cluster_representatives = e.cluster(e)
+    end
+end
