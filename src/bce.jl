@@ -84,6 +84,7 @@ function explore!(e::BCEEvo)
         for i in 1:e.cfg.lambda_explore
             push!(e.population, mutate(e.population[most_novel_index]))
         end
+        evaluate_behavior!(e)
         e.cluster_representatives = e.cluster(e)
     end
 end
