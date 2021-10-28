@@ -1,0 +1,16 @@
+seed: 0            # evolution seed
+d_fitness: 1       # fitness dimension
+d_behavior: 1      # behavior representation dimension
+n_population: 10   # population size
+n_elite: 2         # elites to carry over each generation
+n_gen: 10          # number of generations
+log_gen: 1         # log every x generations
+save_gen: 10       # save population every x generation
+
+n_genes: 10        # gene length
+n_emitters: 3      # number of emitters / number of cluster representatives
+lambda_explore: 5   # number of offspring during exploration
+tournament_size: 3 # tournament size
+p_crossover: 0.3   # crossover probability
+p_mutation: 0.7    # mutation probability
+m_rate: 0.2        # mutation rate

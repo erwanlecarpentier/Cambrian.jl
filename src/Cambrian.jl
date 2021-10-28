@@ -17,5 +17,6 @@ include("evaluation.jl")
 include("step.jl")
 include("oneplus.jl")
 include("GA.jl")
+include("bce.jl")
 
 end
